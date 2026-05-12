@@ -3,27 +3,96 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Arthur Portfolio</title>
 </head>
 <body>
-    <table>
-        <tr>
-            <th>Treinador</th>
-            <th>Jogador Titular</th>
-            <th>Jogador Reserva</th>
-        </tr>
+    <header>
+        <style> * { border: 1px solid #ccc; } </style>
+        <h1>Arthur Portfolio</h1>
+        <h2>Frase de Impacto</h2>
 
-        <tr>
-            <td><img src="/img/images.jpg" alt="1"></td>
-            <td><img src="/img/fotos-random-de-messi-por-que-si-v0-72mb94w3ijld1.webp" alt="2"></td>
-            <td><img src="/img/images (1).jpg" alt="3"></td>
-        </tr>
+        <img src="/img/download (1).jpg" alt="1">
+        <p>Describe</p>
+    </header>
+    
+    <nav>
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Sobre</a></li>
+            <li><a href="#">Contato</a></li>
+        </ul>
+    </nav>
 
-        <tr>
-            <td><img src="/img/download.jpg" alt="4"></td>
-            <td><img src="/img/fdce8d1eaab4ae23d82c2ae905ccc4e4.jpg" alt="5"></td>
-            <td><img src="/img/images (2).jpg" alt="6"></td>
-        </tr>
-    </table>
+
+    <section>
+        <h2>Projetos</h2>
+        <img src="/img/download (1).jpg" alt="1">
+        <p>Descrição do projeto 1</p>
+
+        <img src="/img/download (1).jpg" alt="1">
+        <p>Descrição do projeto 2</p>
+
+        <img src="/img/download (1).jpg" alt="1">
+        <p>Descrição do projeto 3</p>
+
+        <img src="/img/download (1).jpg" alt="1">
+        <p>Descrição do projeto 4</p>
+    </section>
+
+    <article>
+        <h2>Contato</h2>
+        <p>Email:
+    </article>
+
+    <aside>
+        <h2>Redes Sociais</h2>
+        <ul>
+            <li><a href="#">LinkedIn</a></li>
+            <li><a href="#">GitHub</a></li>
+            <li><a href="#">Twitter</a></li>
+        </ul>
+    </aside>
+
+    <form action="#" method="post">
+        <fieldset>
+            legend>Formulário de Contato</legend>
+            <li>
+            <label for="name">Nome</label>
+            <input type="text" id="name" name="name" required>
+            </li>
+
+            <li>
+            <label for="email">email</label>
+            <input type="text" id="email" name="email" required>
+            </li>
+
+            <li>
+                <label for="password">password</label>
+                <input type="text" id="password" name="password" required>
+            </li>
+
+            <li>
+                <label for="date">Data de Nascimento</label>
+                <input type="date" id="date" name="date" required>
+            </li>
+
+            <li>
+                <label for="radio">Radio</label>
+                <input type="radio" id="option1" name="radio" value="option1">
+                <label for="option1">Option 1</label>
+            </li>
+
+            <li>
+                <label for="checkbox">Checkbox</label>
+                <input type="checkbox" id="checkbox" name="checkbox">
+                <label for="checkbox">Option 1</label>
+            </li>
+
+        </fieldset>
+    </form>
+
+    <footer>
+        <p>&copy; 2026 Arthur Portfolio. Todos os direitos reservados.</p>
+    </footer>
 </body>
 </html>
