@@ -4,92 +4,69 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Arthur Portfolio</title>
+    <link rel="stylesheet" href="/css/elements.css">
+    <link rel="stylesheet" href="/css/class.css">
 </head>
 <body>
-    <header>
-        <style> * { border: 1px solid #ccc; } </style>
-        <h1>Arthur Portfolio</h1>
-        <h2>Frase de Impacto</h2>
 
-        <img src="/img/download (1).jpg" alt="1">
-        <p>Describe</p>
-    </header>
-    
     <nav>
-        <ul>
-            <li><a href="#">Home</a></li>
-            <li><a href="#">Sobre</a></li>
-            <li><a href="#">Contato</a></li>
+        <button class="logo">Arthur Melo Gusmão</button>
+
+        <ul class="nav-links">
+            <li><a href="#sobre-mim">Sobre Mim</a></li>
+            <li><a href="#skills">Minhas Skills</a></li>
+            <li><a href="#projetos">Projetos</a></li>
+            <li><a href="#novidades">Novidades</a></li>
         </ul>
+
+        <div class="nav-right">
+            <div class="time-display">
+                <!-- Imagem de Relogio -->
+                <span>12:00</span>
+            </div>
+            <!-- Imagem de Borda -->
+        </div>
     </nav>
 
 
-    <section>
-        <h2>Projetos</h2>
+    <header>
+        <!-- <style> * { border: 1px solid #ccc; } </style> -->
+        <h1>Arthur Melo</h1>
         <img src="/img/download (1).jpg" alt="1">
-        <p>Descrição do projeto 1</p>
+        <h2>I'm Software Engineer</h2>
 
-        <img src="/img/download (1).jpg" alt="1">
-        <p>Descrição do projeto 2</p>
 
-        <img src="/img/download (1).jpg" alt="1">
-        <p>Descrição do projeto 3</p>
+        <p>Software completo, entregue com velocidade e qualidade: UX limpa, arquitetura sólida, impacto real</p>
+    </header>
+    
 
-        <img src="/img/download (1).jpg" alt="1">
-        <p>Descrição do projeto 4</p>
-    </section>
 
-    <article>
-        <h2>Contato</h2>
-        <p>Email:
-    </article>
+    <main>
+        <section id="sobre-mim">
+            <h2>Sobre Mim</h2>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis nostrum similique quo aut ratione optio nemo, deleniti dicta, facere cumque ipsam quaerat cupiditate tenetur beatae maxime. Quae molestias voluptatum illo.</p>
+        </section>
 
-    <aside>
-        <h2>Redes Sociais</h2>
-        <ul>
-            <li><a href="#">LinkedIn</a></li>
-            <li><a href="#">GitHub</a></li>
-            <li><a href="#">Twitter</a></li>
-        </ul>
-    </aside>
+        <section id="skills">
+            <h2>Skills</h2>
+            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Distinctio hic optio voluptatum odit veniam? Magni, iure necessitatibus. Saepe, necessitatibus molestias? At labore distinctio explicabo sint? Praesentium laudantium perspiciatis tempora laborum!</p>
+        </section>
 
-    <form action="#" method="post">
-        <fieldset>
-            legend>Formulário de Contato</legend>
-            <li>
-            <label for="name">Nome</label>
-            <input type="text" id="name" name="name" required>
-            </li>
+        <section id="projetos">
+            <h2>Projetos</h2>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis nostrum similique quo aut ratione optio nemo, deleniti dicta, facere cumque ipsam quaerat cupiditate tenetur beatae maxime. Quae molestias voluptatum illo.</p>
+        </section>
 
-            <li>
-            <label for="email">email</label>
-            <input type="text" id="email" name="email" required>
-            </li>
+        <section id="experiencias">
 
-            <li>
-                <label for="password">password</label>
-                <input type="text" id="password" name="password" required>
-            </li>
+        </section>
 
-            <li>
-                <label for="date">Data de Nascimento</label>
-                <input type="date" id="date" name="date" required>
-            </li>
+        <section id="novidades">
+            <h2>O que estou fazendo</h2>
+            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Facilis provident alias pariatur aliquid vel. Hic similique nostrum reprehenderit minima, libero possimus ipsum exercitationem vitae ex tempore nulla, distinctio optio harum.</p>
+        </section>
+    </main>
 
-            <li>
-                <label for="radio">Radio</label>
-                <input type="radio" id="option1" name="radio" value="option1">
-                <label for="option1">Option 1</label>
-            </li>
-
-            <li>
-                <label for="checkbox">Checkbox</label>
-                <input type="checkbox" id="checkbox" name="checkbox">
-                <label for="checkbox">Option 1</label>
-            </li>
-
-        </fieldset>
-    </form>
 
     <footer>
         <p>&copy; 2026 Arthur Portfolio. Todos os direitos reservados.</p>
