@@ -4,86 +4,225 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Arthur Portfolio</title>
-    <link rel="stylesheet" href="/css/elements.css">
-    <link rel="stylesheet" href="/css/class.css">
+        <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 </head>
-<body>
+<body class="font-sans">
 
-    <nav>
-        <button class="logo">Arthur Melo Gusmão</button>
+    <div class="bg-[#001233] relative w-full">
+        <nav class="absolute top-4 left-0 right-0 z-50 max-w-6xl mx-auto bg-[#2d3648] bg-opacity-20 backdrop-blur-md px-8 py-4 flex flex-col md:flex-row justify-between items-center text-sm text-gray-300 shadow-lg md:rounded-xl">
+            <button class="logo text-white text-lg font-medium mb-4 md:mb-0">Arthur Melo Gusmão</button>
 
-        <ul class="nav-links">
-            <li><a href="#sobre-mim">Sobre Mim</a></li>
-            <li><a href="#skills">Minhas Skills</a></li>
-            <li><a href="#projetos">Projetos</a></li>
-            <li><a href="#novidades">Novidades</a></li>
-        </ul>
+            <ul class="nav-links flex flex-wrap justify-center space-x-6 md:space-x-8 mb-4 md:mb-0">
+                <li><a href="#sobre-mim" class="hover:text-white transition-colors">Sobre Mim</a></li>
+                <li><a href="#skills" class="hover:text-white transition-colors">Minhas Skills</a></li>
+                <li><a href="#projetos" class="hover:text-white transition-colors">Projetos</a></li>
+                <li><a href="#novidades" class="hover:text-white transition-colors">Novidades</a></li>
+            </ul>
 
-        <div class="nav-right">
-            <div class="time-display">
-                <!-- Imagem de Relogio -->
-                <span>12:00</span>
+            <div class="nav-right hidden md:flex items-center">
+                <div class="time-display flex items-center space-x-3 text-white font-medium">
+                    <p>Brasil</p>
+                    <span>12:00</span>
+                </div>
             </div>
-            <!-- Imagem de Borda -->
+        </nav>
+
+        <div class="text-white px-4 md:px-8 pt-40 pb-16 md:pt-48 md:pb-24">
+            <header class="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between">
+
+                <div class="max-w-xl text-center md:text-left">
+                    <h1 class="text-4xl md:text6xl font-medium leading-tight mb-2 text-white">Arthur Melo</h1>
+                    <h2 class="text-3xl md:text4xl font-medium leading-tight mb-6 text-gray-300">I'm Software Engineer</h2>
+
+
+                    <p class="text-gray-400 text-base md:text-lg mb-8 leading-relaxed">Software completo, entregue com velocidade e qualidade: UX limpa, arquitetura sólida, impacto real</p>
+
+                    <button class="bg-black hover:bg-[#323b4d] text-white px-8 py-3 rounded-lg transition-colors border border-gray-600">Saiba Mais</button>
+                </div>
+
+
+                <div class="mt-12 md:mt-0">
+                    <img src="/img/fotos-random-de-messi-por-que-si-v0-72mb94w3ijld1.webp" alt="Lione Messi" class="w-72 h-72 md:w-96 md:h-96 rounded-full object-cover opacity-90 shadow-2xl">
+                </div>
+            </header>
         </div>
-    </nav>
+    </div>
+
+        <main>
+                <section id="sobre-mim" class="bg-[#f8f9fa] text-[#001233] py-16 md:py-24">
+                    <div class="max-w-6xl mx-auto px-4 md:px-8 flex flex-col md:flex-row items-center gap-10 md:gap-16">
+
+                        <div class="w-full md:w-1/2 flex justify-center md:justify-end">
+                            <img src="/img/fdce8d1eaab4ae23d82c2ae905ccc4e4.jpg" alt="Cr7" class="w-72 h-72 md:w-[600px] md:h-[600px] object-cover rounded-3xl shadow-lg block">
+                        </div>
+
+                        <div class="w-full md:w-1/2">
+                            <h2 class="text-3xl md:text-4xl font-bold mb-6 text-right">Sobre Mim</h2>
+                            <p class="text-justify text-base md:text-lg leading-relaxed text-[#001233]">Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis nostrum similique quo aut ratione optio nemo, deleniti dicta, facere cumque ipsam quaerat cupiditate tenetur beatae maxime. Quae molestias voluptatum illo.Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis nostrum similique quo aut ratione optio nemo, deleniti dicta, facere cumque ipsam quaerat cupiditate tenetur beatae maxime. Quae molestias voluptatum illo.
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis nostrum similique quo aut ratione optio nemo, deleniti dicta, facere cumque ipsam quaerat cupiditate tenetur beatae maxime. Quae molestias voluptatum illo.Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis nostrum similique quo aut ratione optio nemo, deleniti dicta, facere cumque ipsam quaerat cupiditate tenetur beatae maxime. Quae molestias voluptatum illo.
+                            </p>
+                        </div>
 
 
-    <header>
-        <!-- <style> * { border: 1px solid #ccc; } </style> -->
-        <h1>Arthur Melo</h1>
-        <img src="/img/download (1).jpg" alt="1">
-        <h2>I'm Software Engineer</h2>
+                    </div>
 
 
-        <p>Software completo, entregue com velocidade e qualidade: UX limpa, arquitetura sólida, impacto real</p>
-    </header>
-    
+
+                </section>
+
+                <hr>
+
+                <section id="skills" class="bg-[#001233] py-16 md:py-24">
+                    <div class="mas-w-6xl mx-auto px-4 md:px-8">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 md:gap-10">
+
+                            <div class="bg-[#e0e2e7] rounded-[2rem] aspect-square p-8 hover:-translate-y-2 transition-transform duration-300">
+                                <span class="text-4xl font-extrabold text-black">C</span>
+                                <p class="p-8">Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed praesentium sit nulla dolorum? Necessitatibus expedita quisquam, magni tenetur error, ratione eligendi corrupti repellendus quibusdam atque ipsa omnis blanditiis fuga amet!
+                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed praesentium sit nulla dolorum? Necessitatibus expedita quisquam, magni tenetur error, ratione eligendi corrupti repellendus quibusdam atque ipsa omnis blanditiis fuga amet!
+                                </p>
+                            </div>
+
+                            <div class="bg-[#e0e2e7] rounded-[2rem] aspect-square p-8 hover:-translate-y-2 transition-transform duration-300">
+                                <span class="text-4xl font-extrabold text-black">C++</span>
+                                <p class="p-8">Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed praesentium sit nulla dolorum? Necessitatibus expedita quisquam, magni tenetur error, ratione eligendi corrupti repellendus quibusdam atque ipsa omnis blanditiis fuga amet!
+                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed praesentium sit nulla dolorum? Necessitatibus expedita quisquam, magni tenetur error, ratione eligendi corrupti repellendus quibusdam atque ipsa omnis blanditiis fuga amet!
+                                </p>
+                            </div>
+
+                            <div class="bg-[#e0e2e7] rounded-[2rem] aspect-square p-8 hover:-translate-y-2 transition-transform duration-300">
+                                <span class="text-4xl font-extrabold text-black">C#</span>
+                                <p class="p-8">Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed praesentium sit nulla dolorum? Necessitatibus expedita quisquam, magni tenetur error, ratione eligendi corrupti repellendus quibusdam atque ipsa omnis blanditiis fuga amet!
+                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed praesentium sit nulla dolorum? Necessitatibus expedita quisquam, magni tenetur error, ratione eligendi corrupti repellendus quibusdam atque ipsa omnis blanditiis fuga amet!
+                                </p>
+                            </div>
+
+                            <div class="bg-[#e0e2e7] rounded-[2rem] aspect-square p-8 hover:-translate-y-2 transition-transform duration-300">
+                                <span class="text-4xl font-extrabold text-black">HTML/CSS</span>
+                                <p class="p-8">Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed praesentium sit nulla dolorum? Necessitatibus expedita quisquam, magni tenetur error, ratione eligendi corrupti repellendus quibusdam atque ipsa omnis blanditiis fuga amet!
+                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed praesentium sit nulla dolorum? Necessitatibus expedita quisquam, magni tenetur error, ratione eligendi corrupti repellendus quibusdam atque ipsa omnis blanditiis fuga amet!
+                                </p>
+                            </div>
+
+                            <div class="bg-[#e0e2e7] rounded-[2rem] aspect-square p-8 hover:-translate-y-2 transition-transform duration-300">
+                                <span class="text-4xl font-extrabold text-black">Python</span>
+                                <p class="p-8">Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed praesentium sit nulla dolorum? Necessitatibus expedita quisquam, magni tenetur error, ratione eligendi corrupti repellendus quibusdam atque ipsa omnis blanditiis fuga amet!
+                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed praesentium sit nulla dolorum? Necessitatibus expedita quisquam, magni tenetur error, ratione eligendi corrupti repellendus quibusdam atque ipsa omnis blanditiis fuga amet!
+                                </p>
+                            </div>
 
 
-    <main>
-        <section id="sobre-mim">
-            <h2>Sobre Mim</h2>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis nostrum similique quo aut ratione optio nemo, deleniti dicta, facere cumque ipsam quaerat cupiditate tenetur beatae maxime. Quae molestias voluptatum illo.</p>
-        </section>
+                            <div class="bg-[#e0e2e7] rounded-[2rem] aspect-square p-8 hover:-translate-y-2 transition-transform duration-300">
+                                <span class="text-4xl font-extrabold text-black">JavaScript</span>
+                                <p class="p-8">Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed praesentium sit nulla dolorum? Necessitatibus expedita quisquam, magni tenetur error, ratione eligendi corrupti repellendus quibusdam atque ipsa omnis blanditiis fuga amet!
+                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed praesentium sit nulla dolorum? Necessitatibus expedita quisquam, magni tenetur error, ratione eligendi corrupti repellendus quibusdam atque ipsa omnis blanditiis fuga amet!
+                                </p>
+                            </div>
 
-        <section id="skills">
-            <h2>Skills</h2>
-            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Distinctio hic optio voluptatum odit veniam? Magni, iure necessitatibus. Saepe, necessitatibus molestias? At labore distinctio explicabo sint? Praesentium laudantium perspiciatis tempora laborum!</p>
-        </section>
+                        </div>
+                    </div>
 
-        <section id="projetos">
-            <h2>Projetos</h2>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis nostrum similique quo aut ratione optio nemo, deleniti dicta, facere cumque ipsam quaerat cupiditate tenetur beatae maxime. Quae molestias voluptatum illo.</p>
-        </section>
-
-        <section id="experiencias">
-
-        </section>
-
-        <section id="novidades">
-            <h2>O que estou fazendo</h2>
-            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Facilis provident alias pariatur aliquid vel. Hic similique nostrum reprehenderit minima, libero possimus ipsum exercitationem vitae ex tempore nulla, distinctio optio harum.</p>
-        </section>
-    </main>
+                </section>
 
 
-    <form action="/contato" method="post">
-        <fieldset>
-            <legend>Dados de Contato</legend>
+    <section id="projetos" class="bg-white text-black py-16 md:py-24">
+    <div class="max-w-6xl mx-auto px-4 md:px-8 flex flex-col md:flex-row items-center md:items-start gap-10 md:gap-16">
 
-            <label for="nome">Nome</label>
-            <input type="text" id="nome" name="nome" required minlength="2">
+        <div class="w-full md:w-1/2 text-center md:text-left">
 
-            <label for="email">E-mail</label>
-            <input type="email" id="email" name="email" required autocomplete="email">
+            <h2 class="text-3xl md:text-4xl font-bold mb-10 text-black">Projetos</h2>
 
-            <button type="submit">Enviar</button>
-        </fieldset>
-    </form>
+            <h3 class="text-2xl md:text-3xl font-bold mb-4 text-black">Portfólio 1.0</h3>
 
-    <footer>
-        <p>&copy; 2026 Arthur Portfolio. Todos os direitos reservados.</p>
-    </footer>
+            <div class="flex items-center justify-center md:justify-start gap-4 mb-6 text-3xl">
+
+                <span class="font-extrabold text-sky-400 text-2xl">Tailwind</span>
+                <span class="font-extrabold text-sky-400 text-2xl">JS</span>
+                <span class="font-extrabold text-sky-400 text-2xl">HTML5</span>
+
+
+            </div>
+
+            <p class="text-base md:text-lg text-justify text-gray-800 leading-relaxed mb-10 md:mb-0">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis nostrum similique quo aut ratione optio nemo, deleniti dicta, facere cumque ipsam quaerat cupiditate tenetur beatae maxime. Quae molestias voluptatum illo. Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis nostrum similique quo aut ratione optio nemo, deleniti dicta, facere cumque ipsam quaerat cupiditate tenetur beatae maxime. Quae molestias voluptatum illo.
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis nostrum similique quo aut ratione optio nemo, deleniti dicta, facere cumque ipsam quaerat cupiditate tenetur beatae maxime. Quae molestias voluptatum illo. Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis nostrum similique quo aut ratione optio nemo, deleniti dicta, facere cumque ipsam quaerat cupiditate tenetur beatae maxime. Quae molestias voluptatum illo.
+            </p>
+        </div>
+
+        <div class="w-full md:w-1/2 flex items-center justify-center md:justify-end">
+            <img
+                src="/img/068e7dbfa656640d0802dd162ba84d37.jpg"
+                alt="Demonstração do Portfólio 1.0"
+                class="w-72 h-72 md:w-[600px] md:h-[600px] object-cover rounded-3xl shadow-lg block"
+            >
+        </div>
+
+        </div>
+            </section>
+
+
+                <section id="experiencias" class="bg-[#001233] text-white py-16 md:py-24">
+                    <div class="max-w-6xl mx-auto px-4 md:px-8">
+                        <h2 class="text-3xl md:text-4xl font-normal mb-10 text-left">Experiências</h2>
+
+                        <div class="flex flex-col md:flex-row gap-10 md:gap-16/">
+                            <div class="w-full md:w-1/2 flex items-center justify-center md:justify-end">
+                                <img src="/img/15898924a100501b1becd679970de3e8.jpg" alt="Neuer" class="w-72 h-72 md:w-[600px] md:h-[600px] object-cover rounded-3xl shadow-lg block">
+                            </div>
+
+                            <div class="w-full md:w-[55%] flex flex-col justify-center">
+                                <h3 class="text-2xl md:text-3xl font-normal mb-6">Edge Academy</h3>
+
+                                <p class="text-base md:text-lg text-justify leading-relaxed">Lorem ipsum dolor sit amet consectetur, adipisicing elit. In possimus molestias inventore atque, reprehenderit sint dolore ut deserunt quae quaerat id recusandae sunt aut delectus? Quod sit tenetur quidem rem?</p>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </section>
+        </main>
+
+        <footer class="bg-black text-white py-16">
+            <div class="text-2xl mx-auto px-4 md:px-8 grid grid-cols-1 md:grid-cols-4 gap-10 md:gap-8">
+                
+                <div class="flex flex-col items-center md:items-start justify-center text-center md:text-left">
+                    <span class="text-2xl font-bold mb-4 tracking-wider text-white">Arthur Melo</span>
+                    <p class="text-sm text-gray-400 leading-relaxed">
+                        © 2026 Arthur Melo Gusmão <br>
+                        Todos os direitos reservados
+                    </p>
+                </div>
+
+                <div class="flex flex-col items-center md:items-start">
+                <h4 class="text-lg font-semibold mb-6 border-b border-white pb-2 w-max">Entre em contato</h4>
+                <ul class="space-y-3 text-sm text-gray-300 text-center md:text-left">
+                    <li><a href="#" class="hover:text-white transition-colors">Email</a></li>
+                    <li><a href="#" class="hover:text-white transition-colors">LinkedIn</a></li>
+                </ul>
+            </div>
+
+            <div class="flex flex-col items-center md:items-start">
+                <h4 class="text-lg font-semibold mb-6 border-b border-white pb-2 w-max">Social</h4>
+                <ul class="space-y-3 text-sm text-gray-300 text-center md:text-left">
+                    <li><a href="#" class="hover:text-white transition-colors">Instagram</a></li>
+                    <li><a href="#" class="hover:text-white transition-colors">LinkedIn</a></li>
+                    <li><a href="#" class="hover:text-white transition-colors">YouTube</a></li>
+                    <li><a href="#" class="hover:text-white transition-colors">X</a></li>
+                </ul>
+            </div>
+
+            <div class="flex flex-col items-center md:items-start">
+                <h4 class="text-lg font-semibold mb-6 border-b border-white pb-2 w-max">Outros</h4>
+                <ul class="space-y-3 text-sm text-gray-300 text-center md:text-left">
+                    <li><a href="#" class="hover:text-white transition-colors">Baixar CV</a></li>
+                    <li><a href="#" class="hover:text-white transition-colors">Política de Privacidade</a></li>
+                </ul>
+            </div>
+
+            </div>
+
+        </footer>
+
+
 </body>
 </html>

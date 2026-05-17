@@ -1,8 +1,14 @@
+/* div, main, aside, section, nav, header{
+    border: 1px solid red;
+} */
+
 html {
     scroll-behavior: smooth;
 }
 
 body {
+    display: flex;
+    flex-direction: column;
     margin: 0;
     font-family: sans-serif;
 
@@ -22,4 +28,22 @@ nav {
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     position: sticky;
     top: 0;
+}
+
+header{
+    background-color: blanchedalmond;
+}
+
+main{
+    flex: 1;
+}
+
+section{
+    background-color: #007ea7;
+}
+
+aside{
+    flex: 0 0 200px;
+    min-height: 400px;
+    background-color: aquamarine;
 }
