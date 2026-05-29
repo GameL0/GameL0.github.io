@@ -4,47 +4,58 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Arthur Portfolio</title>
-        <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+        <link rel="stylesheet" href="./css/style.css">
 </head>
 <body class="font-sans">
 
-    <div class="bg-[#001233] relative w-full">
-        <nav class="absolute top-4 left-0 right-0 z-50 max-w-6xl mx-auto bg-[#2d3648] bg-opacity-20 backdrop-blur-md px-8 py-4 flex flex-col md:flex-row justify-between items-center text-sm text-gray-300 shadow-lg md:rounded-xl">
-            <button class="logo text-white text-lg font-medium mb-4 md:mb-0">Arthur Melo Gusmão</button>
+    <div class="bg-[#001233] min-h-screen flex flex-col w-full font-sans">
+        <nav class="w-full max-w-7xl mx-auto px-8 py-8 flex justify-between items-center text-white">
 
-            <ul class="nav-links flex flex-wrap justify-center space-x-6 md:space-x-8 mb-4 md:mb-0">
-                <li><a href="#sobre-mim" class="hover:text-white transition-colors">Sobre Mim</a></li>
-                <li><a href="#skills" class="hover:text-white transition-colors">Minhas Skills</a></li>
-                <li><a href="#projetos" class="hover:text-white transition-colors">Projetos</a></li>
-                <li><a href="#novidades" class="hover:text-white transition-colors">Novidades</a></li>
-            </ul>
-
-            <div class="nav-right hidden md:flex items-center">
-                <div class="time-display flex items-center space-x-3 text-white font-medium">
-                    <p>Brasil</p>
-                    <span>12:00</span>
-                </div>
+            <div class="logo tracking-widest flex items-center">
+                <img src="./img/Group 4.svg" alt="logo">
             </div>
+
+            <ul class="nav-links hidden md:flex space-x-8 text-sm font-light">
+                <li> <a href="#sobre-mim" class="hover:text-gray-300 transition-colors">Sobre Mim</a></li>
+                <li> <a href="#skills" class="hover:text-gray-300 transition-colors">Skills</a></li>
+                <li> <a href="#projetos" class="hover:text-gray-300 transition-colors">Projetos</a></li>
+                <li> <a href="#experiencias" class="hover:text-gray-300 transition-colors">Experiências</a></li>
+            </ul>
+           
+            <button class="md:hidden text-white">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+            </button>
         </nav>
 
         <div class="text-white px-4 md:px-8 pt-40 pb-16 md:pt-48 md:pb-24">
-            <header class="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between">
+            <header class="flex-grow flex items-center max-w-7xl mx-auto px-8 py-12 md:py-0 w-full">
+            <div class="flex flex-col-reverse md:flex-row items-center justify-between w-full gap-10">
 
-                <div class="max-w-xl text-center md:text-left">
-                    <h1 class="text-4xl md:text6xl font-medium leading-tight mb-2 text-white">Arthur Melo</h1>
-                    <h2 class="text-3xl md:text4xl font-medium leading-tight mb-6 text-gray-300">Engenharia de Software</h2>
+                <div class="w-full md:w-1/2 flex flex-col text-center md:text-left mt-8 md:mt-0">
+                    <h1 class="text-5xl md:text-6xl font-medium text-white mb-2 tracking-tight">Olá, sou</h1>
+                    <h2 class="text-5xl md:text-6xl font-medium text-white mb-6 tracking-tight">Arthur Melo</h2>
 
+                    <p class="text-gray-300 text-base md:text-sm max-w-md mb-8 leading-relaxed mx-auto md:mx-0">
+                        Desenvolvendo soluções que geram impacto
+                    </p>
 
-                    <p class="text-gray-400 text-base md:text-lg mb-8 leading-relaxed">Software completo, entregue com velocidade e qualidade: UX limpa, arquitetura sólida, impacto real</p>
-
-                    <button class="bg-black hover:bg-[#323b4d] text-white px-8 py-3 rounded-lg transition-colors border border-gray-600">Saiba Mais</button>
+                    <div>
+                        <button class="bg-[#222222] hover:bg-[#333333] text-gray-300 text-sm px-18 py-3 rounded-lg transition-colors border border-transparent hover:border-gray-600">
+                            Saiba Mais
+                        </button>
+                    </div>
                 </div>
 
-
-                <div class="mt-12 md:mt-0">
-                    <img src="/img/fotos-random-de-messi-por-que-si-v0-72mb94w3ijld1.webp" alt="Lione Messi" class="w-72 h-72 md:w-96 md:h-96 rounded-full object-cover opacity-90 shadow-2xl">
+                <div class="w-full md:w-1/2 flex justify-center md:justify-end">
+                    <img 
+                        src="./img/WhatsApp Image 2026-05-04 at 16.21.39.jpeg" 
+                        alt="Foto de Arthur Melo" 
+                        class="w-64 h-64 md:w-80 md:h-80 lg:w-[420px] lg:h-[420px] rounded-full object-cover shadow-2xl opacity-90 brightness-90"
+                    >
                 </div>
-            </header>
+
+            </div>
+        </header>
         </div>
     </div>
 
