@@ -58,3 +58,10 @@ Em seguida, abra o endereço exibido no terminal (normalmente `http://localhost:
 - `vite.config.js` — configuração do Vite
 - `package.json` — dependências e scripts do projeto
 
+## Decisões técnicas
+
+- Vite foi escolhido para simplificar o desenvolvimento local, habilitar recarregamento rápido e permitir uso fácil de Tailwind CSS.
+- Tailwind CSS é usado para construir estilos responsivos de forma rápida e manter o CSS modular.
+- O JavaScript está separado em arquivos específicos para manter a interface leve e facilitar futuras alterações.
+- O projeto é estático para garantir boa performance e facilidade de hospedagem em serviços como GitHub Pages.
+
