@@ -1,21 +1,19 @@
 // Espera todo o documento HTML carregar
 document.addEventListener('DOMContentLoaded', function() {
     
-    // Agora sim, ele vai achar os IDs com certeza
     const form = document.getElementById('contact-form');
     const btnSubmit = document.getElementById('btn-submit');
     const btnText = document.getElementById('btn-text');
     const btnSpinner = document.getElementById('btn-spinner');
     const successToast = document.getElementById('success-toast');
 
-    // Se o formulário não for encontrado, ele avisa no console e para aqui
     if (!form) {
         console.error("Formulário não encontrado no HTML!");
         return; 
     }
 
     form.addEventListener('submit', function(event) {
-        event.preventDefault(); // Impede o recarregamento da página
+        event.preventDefault();
 
         btnSubmit.disabled = true;
         btnSubmit.classList.add('opacity-75', 'cursor-not-allowed');
