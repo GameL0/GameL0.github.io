@@ -1,15 +1,36 @@
-import { messages } from '../models/messageModel.js';
+import  { getMessages, saveMessage, updateMessage, deleteMessageById, getMessageById} from '../repositories/messageRepository.js'
 
-export const createMessage = (data) => {
-    if (!data.name || !data.email || !data.messages) {
-        throw new Error("Nome, email e mensagem sao obrigatorios");
+export async function createMessage(data){
+    if(!data.name || !data.email || !data.message) {
+        throw Error("Nome, Email e mensagem são obrigatórios");
     }
 
-    const newMessage = { ...data, readed: false};
-    messages.push(newMessage);
-    return newMessage;
-};
+    return await saveMessage(data)
+}
 
-export const getAllMessages = () => {
-    return messages;
+export async function listMessages(){
+    return await getMessages()
+}
+
+export async function findMessage(id){
+    return await getMessageById(id)
+}
+
+export async function markMessageAsRead(id){
+    const message = await getMessageById(id);
+    
+    if(!message){
+        throw Error("Messagem não encontrada");
+    }
+    return await updateMessage({
+        id,
+        name: message.name,
+        email: message.email,
+        message: message.message,
+        read: true
+    })
+}
+
+export async function deleteMessage(id){
+    await deleteMessageById(id);
 }
