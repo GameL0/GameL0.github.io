@@ -1,67 +1,206 @@
-﻿# GameL0.github.io
+# GameL0 — Portfólio Pessoal
 
-Portfólio pessoal e landing page estática criada para apresentar o trabalho e as habilidades do desenvolvedor Arthur Melo.
+API REST e landing page do portfólio pessoal de Arthur Melo. O projeto permite que visitantes enviem mensagens de contato e exibe os projetos do desenvolvedor, com todas as informações persistidas em banco de dados PostgreSQL.
 
-## Visão geral do projeto
+---
 
-Este projeto é um site de apresentação construído com HTML, CSS e JavaScript, usando Vite como bundler de desenvolvimento e Tailwind CSS para estilos rápidos.
+## 🗂️ Estrutura do Projeto
 
-O site inclui:
-- seções de `Sobre Mim`, `Skills`, `Projetos`, `Experiências` e `Contato`
-- menu responsivo para dispositivos móveis
-- efeito de digitação e navegação suave
-- imagens e conteúdo pensados para um portfólio pessoal
+```
+GameL0/
+├── frontend/          # Landing page estática (HTML, CSS, JS, Tailwind)
+├── backend/           # API REST em Express com Prisma e PostgreSQL
+│   ├── config/        # Configuração do banco de dados (Prisma Client)
+│   ├── controllers/   # Controladores das rotas
+│   ├── routes/        # Definição dos endpoints
+│   ├── services/      # Regras de negócio
+│   ├── repositories/  # Acesso ao banco de dados
+│   └── prisma/        # Schema e migrations do banco
+├── docker-compose.yml # Configuração do PostgreSQL via Docker
+└── README.md
+```
 
-## Escopo
+---
 
-O projeto contempla:
-- página inicial estática para apresentação pessoal
-- navegação ancorada entre seções
-- layout responsivo para desktop e mobile
-- estilos customizados com Tailwind CSS e CSS próprio em `css/style.css`
-- scripts JavaScript para interatividade em `menu-mobile.js`, `forms.js` e `typewriter.js`
+## 🗄️ Entidades do Banco de Dados
 
-Não inclui:
-- backend ou API para envio de formulários
-- autenticação de usuários
-- gerenciamento de banco de dados
+### Message
+Armazena as mensagens enviadas pelo formulário de contato.
 
-## Como usar
+| Campo | Tipo | Descrição |
+|---|---|---|
+| `id` | Int | Chave primária, auto-incremento |
+| `name` | String | Nome de quem enviou |
+| `email` | String | E-mail de quem enviou |
+| `message` | String | Conteúdo da mensagem |
+| `read` | Boolean | Se a mensagem foi lida (padrão: false) |
+| `createdAt` | DateTime | Data de criação (automática) |
+
+### Project
+Armazena os projetos do portfólio.
+
+| Campo | Tipo | Descrição |
+|---|---|---|
+| `id` | Int | Chave primária, auto-incremento |
+| `name` | String | Nome do projeto |
+| `description` | String | Descrição do projeto |
+| `link` | String? | Link do projeto (opcional) |
+| `imageUrl` | String? | URL da imagem (opcional) |
+| `order` | Int | Ordem de exibição (padrão: 0) |
+| `createdAt` | DateTime | Data de criação (automática) |
+| `technologies` | Technology[] | Tecnologias usadas (relação) |
+
+### Technology
+Armazena as tecnologias que podem ser vinculadas aos projetos.
+
+| Campo | Tipo | Descrição |
+|---|---|---|
+| `id` | Int | Chave primária, auto-incremento |
+| `name` | String | Nome da tecnologia (único) |
+| `iconUrl` | String? | URL do ícone (opcional) |
+| `projects` | Project[] | Projetos que usam essa tecnologia |
+
+> **Relacionamento:** `Project` ↔ `Technology` é **muitos para muitos** — um projeto pode ter várias tecnologias e uma tecnologia pode pertencer a vários projetos.
+
+---
+
+## 🚀 Endpoints Principais
+
+### Mensagens — `/messages`
+
+| Método | Endpoint | Descrição | Body |
+|---|---|---|---|
+| `POST` | `/messages` | Cria nova mensagem | `{ name, email, message }` |
+| `GET` | `/messages` | Lista todas as mensagens | — |
+| `PATCH` | `/messages/:id` | Marca mensagem como lida | — |
+| `DELETE` | `/messages/:id` | Deleta uma mensagem | — |
+
+### Projetos — `/projects`
+
+| Método | Endpoint | Descrição | Body |
+|---|---|---|---|
+| `POST` | `/projects` | Cria novo projeto | `{ name, description, link?, imageUrl?, order?, technologies? }` |
+| `GET` | `/projects` | Lista todos os projetos com tecnologias | — |
+| `GET` | `/projects/:id` | Busca projeto por ID | — |
+| `PUT` | `/projects/:id` | Atualiza um projeto | `{ name, description, link?, imageUrl?, order?, technologies? }` |
+| `DELETE` | `/projects/:id` | Deleta um projeto | — |
+
+### Tecnologias — `/technologies`
+
+| Método | Endpoint | Descrição | Body |
+|---|---|---|---|
+| `POST` | `/technologies` | Cria nova tecnologia | `{ name, iconUrl? }` |
+| `GET` | `/technologies` | Lista todas as tecnologias | — |
+
+### Utilitários
+
+| Método | Endpoint | Descrição |
+|---|---|---|
+| `GET` | `/health` | Verifica se o servidor está rodando |
+| `GET` | `/version` | Retorna a versão da API |
+
+---
+
+## ⚙️ Variáveis de Ambiente
+
+Crie um arquivo `.env` dentro da pasta `backend/` com as seguintes variáveis:
+
+```env
+PORT=3000
+POSTGRES_URL=postgres://SEU_USUARIO:SUA_SENHA@localhost:5432/NOME_DO_BANCO
+DATABASE_URL=postgresql://SEU_USUARIO:SUA_SENHA@localhost:5432/NOME_DO_BANCO
+```
+
+| Variável | Descrição |
+|---|---|
+| `PORT` | Porta onde o servidor Express vai rodar |
+| `POSTGRES_URL` | URL de conexão com o PostgreSQL (usada internamente) |
+| `DATABASE_URL` | URL de conexão usada pelo Prisma |
+
+> ⚠️ O arquivo `.env` não é versionado. Nunca suba suas credenciais para o GitHub.
+
+---
+
+## 🐳 Como rodar localmente
 
 ### Requisitos
 
-- Node.js instalado
-- npm ou yarn disponível
+- [Node.js](https://nodejs.org/) v18 ou superior
+- [Docker Desktop](https://www.docker.com/products/docker-desktop/) instalado e rodando
+- [DBeaver](https://dbeaver.io/) (opcional — para visualizar o banco)
 
-### Instalar dependências
+### Passo 1 — Clone o repositório
 
-```powershell
+```bash
+git clone https://github.com/GameL0/GameL0.github.io.git
+cd GameL0
+```
+
+### Passo 2 — Suba o banco de dados com Docker
+
+```bash
+docker compose up -d
+```
+
+### Passo 3 — Configure as variáveis de ambiente
+
+Dentro da pasta `backend/`, crie o arquivo `.env`:
+
+```env
+PORT=3000
+POSTGRES_URL=postgres://gamelo_user:gamelo_pass@localhost:5432/portfolio_db
+DATABASE_URL=postgresql://gamelo_user:gamelo_pass@localhost:5432/portfolio_db
+```
+
+### Passo 4 — Instale as dependências do backend
+
+```bash
+cd backend
 npm install
 ```
 
-### Executar em modo de desenvolvimento
+### Passo 5 — Rode as migrations do banco
 
-```powershell
-npm run dev
+```bash
+npx prisma migrate dev
 ```
 
-Em seguida, abra o endereço exibido no terminal (normalmente `http://localhost:5173`).
+### Passo 6 — Inicie o servidor
 
-## Estrutura principal
+```bash
+node app.js
+```
 
-- `index.html` — estrutura da página
-- `css/style.css` — estilos personalizados
-- `img/` — imagens usadas no site
-- `menu-mobile.js` — controle do menu responsivo
-- `typewriter.js` — animação de digitação no cabeçalho
-- `forms.js` — lógica de formulário de contato (front-end)
-- `vite.config.js` — configuração do Vite
-- `package.json` — dependências e scripts do projeto
+O servidor estará rodando em `http://localhost:3000`.
 
-## Decisões técnicas
+### Passo 7 — Acesse o frontend
 
-- Vite foi escolhido para simplificar o desenvolvimento local, habilitar recarregamento rápido e permitir uso fácil de Tailwind CSS.
-- Tailwind CSS é usado para construir estilos responsivos de forma rápida e manter o CSS modular.
-- O JavaScript está separado em arquivos específicos para manter a interface leve e facilitar futuras alterações.
-- O projeto é estático para garantir boa performance e facilidade de hospedagem em serviços como GitHub Pages.
+Abra o arquivo `frontend/src/pages/index.html` no navegador ou use o Live Server do VS Code.
 
+---
+
+## 🛠️ Tecnologias utilizadas
+
+### Backend
+- [Node.js](https://nodejs.org/)
+- [Express 5](https://expressjs.com/)
+- [Prisma 7](https://www.prisma.io/)
+- [PostgreSQL](https://www.postgresql.org/)
+- [Docker](https://www.docker.com/)
+- [Zod](https://zod.dev/) — validação de dados
+- [dotenv](https://www.npmjs.com/package/dotenv) — variáveis de ambiente
+- [cors](https://www.npmjs.com/package/cors)
+
+### Frontend
+- HTML5, CSS3, JavaScript
+- [Tailwind CSS](https://tailwindcss.com/)
+- [Vite](https://vitejs.dev/)
+
+---
+
+## 👨‍💻 Autor
+
+**Arthur Melo Gusmão**
+
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=flat&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/arthur-melo-gusm%C3%A3o-9a5977248/)
+[![GitHub](https://img.shields.io/badge/GitHub-100000?style=flat&logo=github&logoColor=white)](https://github.com/GameL0)
