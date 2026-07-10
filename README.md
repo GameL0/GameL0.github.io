@@ -148,9 +148,12 @@ Dentro da pasta `backend/`, crie o arquivo `.env`:
 
 ```env
 PORT=3000
-POSTGRES_URL=postgres://gamelo_user:gamelo_pass@localhost:5432/portfolio_db
-DATABASE_URL=postgresql://gamelo_user:gamelo_pass@localhost:5432/portfolio_db
+POSTGRES_URL=postgres://SEU_USUARIO:SUA_SENHA@localhost:5432/NOME_DO_BANCO
+DATABASE_URL=postgresql://SEU_USUARIO:SUA_SENHA@localhost:5432/NOME_DO_BANCO
 ```
+
+> Substitua `SEU_USUARIO`, `SUA_SENHA` e `NOME_DO_BANCO` pelos valores definidos no seu `docker-compose.yml`.
+
 
 ### Passo 4 — Instale as dependências do backend
 
