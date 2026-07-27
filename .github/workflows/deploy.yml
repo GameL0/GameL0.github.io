@@ -34,7 +34,7 @@ jobs:
       - name: Build
         working-directory: ./frontend
         env:
-          VITE_API_URL: http://3.218.0.3:3000
+          VITE_API_URL: https://dyqjb7leifw63.cloudfront.net
         run: npm run build
 
       - name: Setup Pages
