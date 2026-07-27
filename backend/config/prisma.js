@@ -1,4 +1,5 @@
 import "./env.js";
+import pg from "pg";
 import { PrismaPg } from "@prisma/adapter-pg";
 import { PrismaClient } from "../generated/prisma/index.js"
 
@@ -16,7 +17,15 @@ if(!hostname || !dbName || !port || !username || !password){
 }
 
 const connectionString =
-    `postgresql://${username}:${encodeURIComponent(password)}@${hostname}:${port}/${dbName}?sslmode=require`;
+    `postgresql://${username}:${encodeURIComponent(password)}@${hostname}:${port}/${dbName}`;
 
-const adapter = new PrismaPg({ connectionString });
+// Criamos o pool configurando o SSL para aceitar o certificado em nuvem da AWS RDS
+const pool = new pg.Pool({
+    connectionString,
+    ssl: {
+        rejectUnauthorized: false
+    }
+});
+
+const adapter = new PrismaPg(pool);
 export const prisma = new PrismaClient({ adapter });
