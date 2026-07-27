@@ -1,4 +1,6 @@
 // Espera todo o documento HTML carregar
+const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3000'
+
 document.addEventListener('DOMContentLoaded', function() {
     
     const form = document.getElementById('contact-form');
@@ -26,7 +28,7 @@ document.addEventListener('DOMContentLoaded', function() {
         btnSpinner.classList.remove('hidden');
 
         try {
-            const response = await fetch('http://localhost:3000/messages', {
+            const response = await fetch(`${API_URL}/messages`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ name, email, message })

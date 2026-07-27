@@ -1,10 +1,12 @@
 FROM node:lts-slim
 
-WORKDIR ./app
-COPY package.json package-lock.json .
+WORKDIR /app
+COPY package.json package-lock.json ./
 RUN npm ci
 COPY . .
 RUN npm run db:generate
 EXPOSE 3000
-CMD ["npm", "db:migrate"]
-CMD ["node", "./app.js"]
+HEALTHCHECK --interval=30s --timeout=5s --start-period=15s --retries=3 \
+    CMD ["node", "-e", "fetch('http://localhost:3000/health').then(r => process.exit(r.ok ? 0 : 1)).catch(() => process.exit(1))"]
+USER node
+CMD ["sh", "-c", "node ./server.js"]

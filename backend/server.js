@@ -1,4 +1,4 @@
-import "dotenv/config"
+import "./config/env.js"
 import express from 'express';
 import cors from 'cors'
 import { router as messageRouter } from './routes/messageRouter.js'
@@ -10,7 +10,12 @@ const PORT = process.env.PORT || 3000
 
 // Middlewares
 const app = express();
-app.use(cors())
+app.use(cors({
+    origin: [
+        'https://gamel0.github.io',
+        'http://localhost:5173',
+    ]
+}))
 app.use(express.json());
 
 app.get('/health', (req, res) => {
