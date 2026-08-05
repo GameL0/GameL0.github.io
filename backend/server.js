@@ -4,6 +4,7 @@ import cors from 'cors'
 import { router as messageRouter } from './routes/messageRouter.js'
 import { router as projectRouter } from './routes/projectRouter.js'
 import { router as technologyRouter } from './routes/technologyRouter.js'
+import { router as authRouter } from './routes/authRouter.js'
 
 const PORT = process.env.PORT || 3000
 
@@ -26,6 +27,7 @@ app.get('/version', (req, res) => {
     res.json({ version: "1.0.0"});
 });
 
+app.use('/auth', authRouter);
 app.use('/messages', messageRouter);
 app.use('/projects', projectRouter);
 app.use('/technologies', technologyRouter);

@@ -4,8 +4,8 @@ import { postMessageController, getMessagesController, patchMessagesController, 
 const router = express.Router();
 
 router.post('/', postMessageController);
-router.get('/', getMessagesController);
-router.patch('/:id', patchMessagesController);
-router.delete('/:id', deleteMessagesController);
+router.get('/', requireAdmin, getMessagesController);
+router.patch('/:id', requireAdmin, patchMessagesController);
+router.delete('/:id', requireAdmin, deleteMessagesController);
 
 export { router } ;

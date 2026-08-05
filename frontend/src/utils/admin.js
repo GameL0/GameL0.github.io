@@ -1,66 +1,132 @@
 import '../css/style.css';
 const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3000'
 
-async function carregarMensagens() {
-    const loading = document.getElementById('loading')
-    const vazio = document.getElementById('vazio')
-    const lista = document.getElementById('lista-mensagens')
-    const contador = document.getElementById('contador')
+import '../css/style.css';
+const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3000';
 
-    loading.classList.remove('hidden')
-    vazio.classList.add('hidden')
-    lista.classList.add('hidden')
-    lista.innerHTML = ''
+// Auth
+function getToken() {
+    return sessionStorage.getItem('admin_token');
+}
+
+function authHeaders() {
+    return { 'Authorization': `Bearer ${getToken()}` };
+}
+
+function mostrarLogin() {
+    document.getElementById('login-screen').classList.remove('hidden');
+    document.getElementById('admin-content').classList.add('hidden');
+}
+
+function mostrarAdmin() {
+    document.getElementById('login-screen').classList.add('hidden');
+    document.getElementById('admin-content').classList.remove('hidden');
+    carregarMensagens();
+}
+
+function fazerLogout() {
+    sessionStorage.removeItem('admin_token');
+    mostrarLogin();
+}
+
+// Formulário de login
+document.getElementById('login-form').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const senha = document.getElementById('senha-input').value;
+    const erro = document.getElementById('login-erro');
 
     try {
-        const response = await fetch(`${API_URL}/messages`)
-        const mensagens = await response.json()
+        const res = await fetch(`${API_URL}/auth/login`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ password: senha })
+        });
 
-        loading.classList.add('hidden')
-
-        if (mensagens.length === 0) {
-            vazio.classList.remove('hidden')
-            contador.textContent = 'Nenhuma mensagem'
-            return
+        if (!res.ok) {
+            erro.classList.remove('hidden');
+            return;
         }
 
-        const naoLidas = mensagens.filter(m => !m.read).length
+        const { token } = await res.json();
+        sessionStorage.setItem('admin_token', token);
+        erro.classList.add('hidden');
+        mostrarAdmin();
+    } catch {
+        erro.classList.remove('hidden');
+    }
+});
+
+// Mensagens
+async function carregarMensagens() {
+    const loading = document.getElementById('loading');
+    const vazio = document.getElementById('vazio');
+    const lista = document.getElementById('lista-mensagens');
+    const contador = document.getElementById('contador');
+
+    loading.classList.remove('hidden');
+    vazio.classList.add('hidden');
+    lista.classList.add('hidden');
+    lista.innerHTML = '';
+
+    try {
+        const response = await fetch(`${API_URL}/messages`, {
+            headers: authHeaders()
+        });
+
+        if (response.status === 401) {
+            sessionStorage.removeItem('admin_token');
+            mostrarLogin();
+            return;
+        }
+
+        const mensagens = await response.json();
+
+        loading.classList.add('hidden');
+
+        if (mensagens.length === 0) {
+            vazio.classList.remove('hidden');
+            contador.textContent = 'Nenhuma mensagem';
+            return;
+        }
+
+        const naoLidas = mensagens.filter(m => !m.read).length;
         contador.textContent = naoLidas > 0
             ? `${naoLidas} não lida${naoLidas > 1 ? 's' : ''} · ${mensagens.length} total`
-            : `${mensagens.length} mensagem${mensagens.length > 1 ? 's' : ''} · todas lidas`
+            : `${mensagens.length} mensagem${mensagens.length > 1 ? 's' : ''} · todas lidas`;
 
-        lista.classList.remove('hidden')
+        lista.classList.remove('hidden');
 
         mensagens.forEach(mensagem => {
-            const card = criarCard(mensagem)
-            lista.appendChild(card)
-        })
+            const card = criarCard(mensagem);
+            lista.appendChild(card);
+        });
 
     } catch (err) {
-        loading.classList.add('hidden')
-        lista.classList.remove('hidden')
+        loading.classList.add('hidden');
+        lista.classList.remove('hidden');
         lista.innerHTML = `
             <div class="text-center text-red-400 py-20">
                 <p class="text-xl">❌ Erro ao carregar mensagens.</p>
                 <p class="text-sm mt-2">Verifique se o servidor está rodando em ${API_URL}</p>
             </div>
-        `
+        `;
     }
 }
 
+// Card de Mensagem
 function criarCard(mensagem) {
-    const div = document.createElement('div')
-    const naoLida = !mensagem.read
+    const div = document.createElement('div');
+    const naoLida = !mensagem.read;
 
-    div.id = `mensagem-${mensagem.id}`
+    div.id = `mensagem-${mensagem.id}`;
     div.className = `
         rounded-xl p-6 border transition-all
         ${naoLida
             ? 'bg-[#001a4d] border-[#3a86ff] shadow-lg shadow-blue-900/20'
             : 'bg-[#000d1a] border-[#002878] opacity-75'}
-    `
+    `;
 
-    const data = new Date(mensagem.createdAt).toLocaleString('pt-BR')
+    const data = new Date(mensagem.createdAt).toLocaleString('pt-BR');
 
     div.innerHTML = `
         <div class="flex items-start justify-between gap-4">
@@ -95,43 +161,72 @@ function criarCard(mensagem) {
                 </button>
             </div>
         </div>
-    `
+    `;
 
-    return div
+    return div;
 }
 
+// Ações Admin
 async function marcarComoLida(id) {
     try {
         const response = await fetch(`${API_URL}/messages/${id}`, {
-            method: 'PATCH'
-        })
-        if (!response.ok) throw new Error('Erro ao atualizar')
-        await carregarMensagens()
+            method: 'PATCH',
+            headers: authHeaders()
+        });
+
+        if (response.status === 401) {
+            sessionStorage.removeItem('admin_token');
+            mostrarLogin();
+            return;
+        }
+
+        if (!response.ok) throw new Error('Erro ao atualizar');
+        await carregarMensagens();
     } catch (err) {
-        alert('Erro ao marcar mensagem como lida.')
+        alert('Erro ao marcar mensagem como lida.');
     }
 }
 
 async function deletarMensagem(id) {
-    const confirmar = confirm('Tem certeza que deseja deletar esta mensagem?')
-    if (!confirmar) return
+    const confirmar = confirm('Tem certeza que deseja deletar esta mensagem?');
+    if (!confirmar) return;
 
     try {
         const response = await fetch(`${API_URL}/messages/${id}`, {
-            method: 'DELETE'
-        })
-        if (!response.ok) throw new Error('Erro ao deletar')
-        await carregarMensagens()
+            method: 'DELETE',
+            headers: authHeaders()
+        });
+
+        if (response.status === 401) {
+            sessionStorage.removeItem('admin_token');
+            mostrarLogin();
+            return;
+        }
+
+        if (!response.ok) throw new Error('Erro ao deletar');
+        await carregarMensagens();
     } catch (err) {
-        alert('Erro ao deletar mensagem.')
+        alert('Erro ao deletar mensagem.');
     }
 }
 
+// Utilitários
 function escaparHTML(texto) {
-    const div = document.createElement('div')
-    div.appendChild(document.createTextNode(texto))
-    return div.innerHTML
+    const div = document.createElement('div');
+    div.appendChild(document.createTextNode(texto));
+    return div.innerHTML;
 }
 
-// Carrega ao abrir a página
-carregarMensagens()
+// Expor funções para os onclick inline do HTML
+window.carregarMensagens = carregarMensagens;
+window.marcarComoLida = marcarComoLida;
+window.deletarMensagem = deletarMensagem;
+window.fazerLogout = fazerLogout;
+
+// Inicialização
+// Se já tem token salvo na sessão, vai direto pro admin
+if (getToken()) {
+    mostrarAdmin();
+} else {
+    mostrarLogin();
+}
