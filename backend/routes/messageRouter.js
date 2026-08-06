@@ -1,5 +1,6 @@
 import express from 'express';
 import { postMessageController, getMessagesController, patchMessagesController, deleteMessagesController } from '../controllers/messageController.js';
+import { requireAdmin } from '../config/authMiddleware.js';
 
 const router = express.Router();
 
