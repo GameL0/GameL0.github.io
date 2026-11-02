@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Arthur Melo</title>
     <link rel="icon" type="Image" href="../assets/img/Group 4.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="../css/style.css" />
   </head>
   <body class="font-sans">
@@ -12,9 +15,15 @@
       <nav
         class="w-full max-w-7xl mx-auto px-8 py-10 flex justify-between items-center text-white relative"
       >
-        <div class="logo tracking-widest flex items-center">
-          <img src="../assets/img/Group 4.svg" alt="logo" />
-        </div>
+        <a href="#" class="logo-orbit" aria-label="Arthur Melo, voltar ao início">
+          <svg class="logo-orbit__mark" viewBox="0 0 50 50" width="50" height="50" aria-hidden="true">
+            <circle class="logo-orbit__ring" cx="25" cy="25" r="20" />
+            <path class="logo-orbit__arc" d="M17.24 2.29 A24 24 0 0 1 46.06 36.51" />
+            <g class="logo-orbit__dot"><circle cx="39.63" cy="11.37" r="2" /></g>
+            <text class="logo-orbit__initials" x="25" y="30.4" text-anchor="middle">AM</text>
+          </svg>
+          <span class="logo-orbit__name">Arthur Melo</span>
+        </a>
 
         <ul
           id="menu-links"
