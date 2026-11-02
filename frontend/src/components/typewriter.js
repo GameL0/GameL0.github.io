@@ -29,6 +29,7 @@ document.addEventListener('DOMContentLoaded', function() {
         } else {
             
             h2Nome.innerHTML += '<span class="animate-pulse font-light">|</span>';
+            document.dispatchEvent(new CustomEvent('typewriter:done'));
         }
     }
 

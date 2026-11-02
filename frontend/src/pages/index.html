@@ -9,9 +9,10 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="../css/style.css" />
+    <script>document.documentElement.classList.add("js");</script>
   </head>
   <body class="font-sans">
-    <div class="bg-[#001233] min-h-screen flex flex-col w-full font-sans">
+    <div class="hero-wrap bg-[#001233] min-h-screen flex flex-col w-full font-sans relative">
       <nav
         class="w-full max-w-7xl mx-auto px-8 py-10 flex justify-between items-center text-white relative"
       >
@@ -93,6 +94,11 @@
             <div
               class="w-full md:w-1/2 flex flex-col text-center md:text-left mt-8 md:mt-0"
             >
+              <p class="eyebrow hero-in justify-center md:justify-start mb-6" style="--d: 0.1s">
+                <span class="eyebrow__line" aria-hidden="true"></span>
+                Desenvolvedor de software
+              </p>
+
               <h1
                 id="ola-text"
                 class="text-5xl md:text-6xl font-medium text-white mb-2 tracking-tight min-h-48px md:min-h-[60px]"
@@ -104,32 +110,50 @@
               ></h2>
 
               <p
-                class="text-gray-300 text-base md:text-sm max-w-md mb-8 leading-relaxed mx-auto md:mx-0"
+                class="hero-after text-gray-300 text-base md:text-sm max-w-md mb-8 leading-relaxed mx-auto md:mx-0"
               >
                 um desenvolvedor apaixonado por tecnologia e por criar soluções
                 que realmente fazem a diferença
               </p>
 
-              <div>
+              <div class="hero-after" style="--d: 0.15s">
                 <a
                   href="#sobre-mim"
-                  class="bg-[#000814] hover:bg-[#343a40] text-gray-300 px-20 py-3 rounded-lg transition-colors border border-transparent hover:border-gray-600 inline-block text-center cursor-pointer"
+                  class="btn-arrow bg-[#000814] hover:bg-[#343a40] text-gray-300 px-20 py-3 rounded-lg transition-colors border border-transparent hover:border-gray-600 inline-flex items-center justify-center gap-3 cursor-pointer"
                 >
                   Saiba Mais
+                  <svg class="btn-arrow__icon w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M7 17L17 7M9 7h8v8" />
+                  </svg>
                 </a>
               </div>
             </div>
 
             <div class="w-full md:w-1/2 flex justify-center md:justify-end">
-              <img
-                src="../assets/img/WhatsApp Image 2026-05-04 at 16.21.39.jpeg"
-                alt="Foto de Arthur Melo"
-                class="w-64 h-64 md:w-80 md:h-80 lg:w-[420px] lg:h-[420px] rounded-full object-cover opacity-90 brightness-90"
-              />
+              <div class="hero-photo hero-in" style="--d: 0.3s">
+                <span class="hero-photo__ring hero-photo__ring--inner" aria-hidden="true"></span>
+                <span class="hero-photo__ring hero-photo__ring--outer" aria-hidden="true">
+                  <span class="hero-photo__dot"></span>
+                </span>
+                <img
+                  src="../assets/img/WhatsApp Image 2026-05-04 at 16.21.39.jpeg"
+                  alt="Foto de Arthur Melo"
+                  class="relative w-64 h-64 md:w-80 md:h-80 lg:w-[420px] lg:h-[420px] rounded-full object-cover opacity-90 brightness-90"
+                />
+                <span class="hero-badge" aria-hidden="true">
+                  <span class="hero-badge__pulse"></span>
+                  Disponível<br />para criar
+                </span>
+              </div>
             </div>
           </div>
         </header>
       </div>
+
+      <a href="#sobre-mim" class="scroll-cue hero-after" style="--d: 0.4s" aria-label="Role para descobrir">
+        <span class="scroll-cue__text">Role para descobrir</span>
+        <span class="scroll-cue__track" aria-hidden="true"><span class="scroll-cue__thumb"></span></span>
+      </a>
     </div>
 
     <main>
@@ -140,20 +164,21 @@
         <div
           class="max-w-6xl mx-auto px-4 md:px-8 flex flex-col md:flex-row items-center gap-10 md:gap-16"
         >
-          <div class="w-full md:w-1/2 flex justify-center md:justify-end">
+          <div class="w-full md:w-1/2 flex justify-center md:justify-end" data-reveal>
             <img
               src="../assets/img/WhatsApp Image 2026-05-04 at 16.21.39.jpeg"
               alt="Foto Arthur Melo"
-              class="w-72 h-72 md:w-[600px] md:h-[600px] object-cover rounded-3xl shadow-lg block"
+              class="w-72 h-72 md:w-[600px] md:h-[600px] object-cover rounded-3xl shadow-lg block img-lift"
             />
           </div>
 
           <div class="w-full md:w-1/2">
-            <h2 class="text-3xl md:text-4xl font-bold mb-6 text-right">
+            <h2 class="text-3xl md:text-4xl font-bold mb-6 text-right" data-reveal>
               Sobre Mim
             </h2>
             <p
               class="text-justify text-base md:text-lg leading-relaxed text-[#001233] mb-4"
+              data-reveal
             >
               Olá! Sou o Arthur, um desenvolvedor apaixonado por tecnologia e
               por criar soluções que realmente fazem a diferença. Minha jornada
@@ -163,6 +188,7 @@
             </p>
             <p
               class="text-justify text-base md:text-lg leading-relaxed text-[#001233] mb-4"
+              data-reveal
             >
               Acredito que o desenvolvimento de software vai muito além de
               dominar sintaxes; trata-se de arquitetar experiências intuitivas e
@@ -172,6 +198,7 @@
             </p>
             <p
               class="text-justify text-base md:text-lg leading-relaxed text-[#001233]"
+              data-reveal
             >
               Atualmente, dedico meu tempo a aprimorar minhas habilidades,
               estudar novas tecnologias e construir projetos que me forçam a
@@ -187,7 +214,7 @@
 
       <section id="skills" class="bg-[#001233] py-16 md:py-24 text-white">
         <div class="max-w-6xl mx-auto px-4 md:px-8">
-          <div class="mb-16">
+          <div class="mb-16" data-reveal>
             <h2 class="text-4xl md:text-5xl font-bold mb-2">
               Skills e Ferramentas
             </h2>
@@ -211,7 +238,8 @@
             class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 mb-20"
           >
             <div
-              class="bg-[#001a4d] border border-[#002878] p-8 rounded-xl shadow-lg hover:-translate-y-2 transition-transform duration-300 flex flex-col items-center text-center"
+              class="skill-card bg-[#001a4d] border border-[#002878] p-8 rounded-xl shadow-lg flex flex-col items-center text-center"
+              data-reveal
             >
               <div class="bg-blue-500/20 p-4 rounded-full mb-6 text-blue-400">
                 <svg
@@ -237,7 +265,8 @@
             </div>
 
             <div
-              class="bg-[#001a4d] border border-[#002878] p-8 rounded-xl shadow-lg hover:-translate-y-2 transition-transform duration-300 flex flex-col items-center text-center"
+              class="skill-card bg-[#001a4d] border border-[#002878] p-8 rounded-xl shadow-lg flex flex-col items-center text-center"
+              data-reveal
             >
               <div
                 class="bg-emerald-500/20 p-4 rounded-full mb-6 text-emerald-400"
@@ -265,7 +294,8 @@
             </div>
 
             <div
-              class="bg-[#001a4d] border border-[#002878] p-8 rounded-xl shadow-lg hover:-translate-y-2 transition-transform duration-300 flex flex-col items-center text-center"
+              class="skill-card bg-[#001a4d] border border-[#002878] p-8 rounded-xl shadow-lg flex flex-col items-center text-center"
+              data-reveal
             >
               <div
                 class="bg-purple-500/20 p-4 rounded-full mb-6 text-purple-400"
@@ -293,7 +323,8 @@
             </div>
 
             <div
-              class="bg-[#001a4d] border border-[#002878] p-8 rounded-xl shadow-lg hover:-translate-y-2 transition-transform duration-300 flex flex-col items-center text-center"
+              class="skill-card bg-[#001a4d] border border-[#002878] p-8 rounded-xl shadow-lg flex flex-col items-center text-center"
+              data-reveal
             >
               <div
                 class="bg-orange-500/20 p-4 rounded-full mb-6 text-orange-400"
@@ -323,6 +354,7 @@
 
           <div
             class="flex flex-wrap justify-center items-center gap-8 md:gap-12"
+            data-reveal-group
           >
             <img
               src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg"
@@ -373,7 +405,7 @@
         <div
           class="max-w-6xl mx-auto px-4 md:px-8 flex flex-col md:flex-row items-center md:items-start gap-10 md:gap-16"
         >
-          <div class="w-full md:w-1/2 text-center md:text-left">
+          <div class="w-full md:w-1/2 text-center md:text-left" data-reveal>
             <h2 class="text-3xl md:text-4xl font-bold mb-10 text-black">
               Projetos
             </h2>
@@ -431,11 +463,12 @@
 
           <div
             class="w-full md:w-1/2 flex items-center justify-center md:justify-end"
+            data-reveal
           >
             <img
               src="../assets/img/WhatsApp Image 2026-06-01 at 10.44.41.jpeg"
               alt="Demonstração do Portfólio 1.0"
-              class="w-72 h-72 md:w-[600px] md:h-[600px] object-cover rounded-3xl shadow-lg block"
+              class="w-72 h-72 md:w-[600px] md:h-[600px] object-cover rounded-3xl shadow-lg block img-lift"
             />
           </div>
         </div>
@@ -443,22 +476,23 @@
 
       <section id="experiencias" class="bg-[#001233] text-white py-16 md:py-24">
         <div class="max-w-6xl mx-auto px-4 md:px-8">
-          <h2 class="text-3xl md:text-4xl font-bold mb-10 text-left">
+          <h2 class="text-3xl md:text-4xl font-bold mb-10 text-left" data-reveal>
             Experiências
           </h2>
 
           <div class="flex flex-col md:flex-row gap-10 md:gap-16">
             <div
               class="w-full md:w-1/2 flex items-center justify-center md:justify-end"
+              data-reveal
             >
               <img
                 src="../assets/img/WhatsApp Image 2026-05-31 at 20.44.40.jpeg"
                 alt="foto do Edge"
-                class="w-72 h-72 md:w-[600px] md:h-[600px] object-cover rounded-3xl shadow-lg block"
+                class="w-72 h-72 md:w-[600px] md:h-[600px] object-cover rounded-3xl shadow-lg block img-lift"
               />
             </div>
 
-            <div class="w-full md:w-[55%] flex flex-col justify-center">
+            <div class="w-full md:w-[55%] flex flex-col justify-center" data-reveal>
               <h3 class="text-2xl md:text-3xl font-medium mb-6">
                 Edge Academy
               </h3>
@@ -480,7 +514,7 @@
 
       <section id="contato" class="bg-[#f8f9fa] text-[#001233] py-16 md:py-24">
         <div class="max-w-4xl mx-auto px-4 md:px-8">
-          <div class="text-center mb-12">
+          <div class="text-center mb-12" data-reveal>
             <h2 class="text-3xl md:text-4xl font-bold mb-4 inline-block">
               Vamos Conversar?
             </h2>
@@ -492,6 +526,7 @@
           <form
             id="contact-form"
             class="bg-white p-8 rounded-2xl shadow-md space-y-6"
+            data-reveal
           >
             <div class="flex flex-col md:flex-row gap-6">
               <div class="w-full md:w-1/2 flex flex-col">
@@ -614,7 +649,7 @@
             href="https://www.linkedin.com/in/arthur-melo-gusm%C3%A3o-9a5977248/?trk=public-profile-join-page"
             target="_blank"
             rel="noopener noreferrer"
-            class="text-gray-400 hover:text-[#0077b5] transition-colors cursor-pointer"
+            class="text-gray-400 hover:text-[#0077b5] transition-colors cursor-pointer social-link"
             aria-label="LinkedIn"
           >
             <svg class="w-7 h-7" fill="currentColor" viewBox="0 0 24 24">
@@ -628,7 +663,7 @@
             href="https://www.instagram.com/artthurgusmao/"
             target="_blank"
             rel="noopener noreferrer"
-            class="text-gray-400 hover:text-[#E1306C] transition-colors cursor-pointer"
+            class="text-gray-400 hover:text-[#E1306C] transition-colors cursor-pointer social-link"
             aria-label="Instagram"
           >
             <svg class="w-7 h-7" fill="currentColor" viewBox="0 0 24 24">
@@ -642,7 +677,7 @@
             href="https://github.com/GameL0"
             target="_blank"
             rel="noopener noreferrer"
-            class="text-gray-400 hover:text-white transition-colors cursor-pointer"
+            class="text-gray-400 hover:text-white transition-colors cursor-pointer social-link"
             aria-label="GitHub"
           >
             <svg class="w-7 h-7" fill="currentColor" viewBox="0 0 24 24">
@@ -658,6 +693,7 @@
     <script type="module" src="../components/typewriter.js"></script>
     <script type="module" src="../utils/forms.js"></script>
     <script type="module" src="../components/menu-mobile.js"></script>
+    <script type="module" src="../components/animations.js"></script>
   </body>
 </html>
 
