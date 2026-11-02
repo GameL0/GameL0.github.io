@@ -1,8 +1,8 @@
 document.addEventListener('DOMContentLoaded', function() {
     const texto1 = "Olá, sou";
-    const texto2 = "Arthur Melo";
+    const texto2 = "Arthur Melo.";
     
-    const velocidade = 100;
+    const velocidade = 90;
     
     const h1Ola = document.getElementById('ola-text');
     const h2Nome = document.getElementById('nome-text');
@@ -28,7 +28,7 @@ document.addEventListener('DOMContentLoaded', function() {
             setTimeout(digitarSegundaLinha, velocidade);
         } else {
             
-            h2Nome.innerHTML += '<span class="animate-pulse font-light">|</span>';
+            h2Nome.innerHTML += '<span class="type-caret" aria-hidden="true"></span>';
             document.dispatchEvent(new CustomEvent('typewriter:done'));
         }
     }
