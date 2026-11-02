@@ -10,6 +10,11 @@ const liberarHero = () => raiz.classList.add('hero-typed');
 document.addEventListener('typewriter:done', liberarHero, { once: true });
 setTimeout(liberarHero, reduzMovimento ? 0 : 3200);
 
+// Redes sociais em volta da foto. Para testar outra posição: ?redes=base | arco | orbita
+const redes = document.querySelector('[data-hero-social]');
+const layoutRedes = new URLSearchParams(location.search).get('redes');
+if (redes && ['arco', 'orbita', 'base'].includes(layoutRedes)) redes.dataset.layout = layoutRedes;
+
 // ---------- Revelação ao rolar ----------
 const alvos = document.querySelectorAll('[data-reveal], [data-reveal-group], [data-reveal-lines]');
 
