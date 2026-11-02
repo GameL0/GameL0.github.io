@@ -1,2 +1,81 @@
 @import "tailwindcss";
 @source "../**/*.{html,js}";
+
+/* ---------- Logo L4 · Órbita ---------- */
+.logo-orbit {
+  --orbit-ink: #f7f7f4;
+  --orbit-accent: #b9c9df;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--orbit-ink);
+  text-decoration: none;
+  font-family: "Outfit", ui-sans-serif, system-ui, sans-serif;
+  font-weight: 300;
+  font-size: 20px;
+  letter-spacing: 0;
+}
+
+.logo-orbit__mark { overflow: visible; }
+
+.logo-orbit__ring,
+.logo-orbit__arc,
+.logo-orbit__dot {
+  transform-box: view-box;
+  transform-origin: 25px 25px;
+}
+
+.logo-orbit__ring {
+  fill: none;
+  stroke: var(--orbit-accent);
+  stroke-width: 1;
+  opacity: 0.6;
+  transition: opacity 0.4s ease;
+}
+
+.logo-orbit__arc {
+  fill: none;
+  stroke: var(--orbit-accent);
+  stroke-width: 1;
+  stroke-linecap: round;
+  opacity: 0.4;
+}
+
+.logo-orbit__dot {
+  fill: var(--orbit-accent);
+  animation: logo-orbit-spin 3.6s linear infinite;
+  animation-play-state: paused;
+}
+
+.logo-orbit__initials {
+  fill: var(--orbit-ink);
+  font-family: "Outfit", ui-sans-serif, system-ui, sans-serif;
+  font-weight: 300;
+  font-size: 15px;
+  letter-spacing: 0.5px;
+}
+
+.logo-orbit:hover .logo-orbit__dot,
+.logo-orbit:focus-visible .logo-orbit__dot {
+  animation-play-state: running;
+}
+
+.logo-orbit:hover .logo-orbit__ring,
+.logo-orbit:focus-visible .logo-orbit__ring {
+  opacity: 1;
+}
+
+.logo-orbit:focus-visible {
+  outline: 1px solid var(--orbit-accent);
+  outline-offset: 6px;
+  border-radius: 999px;
+}
+
+@keyframes logo-orbit-spin {
+  to { transform: rotate(360deg); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .logo-orbit__ring { transition: none; }
+  .logo-orbit__dot { animation: none; }
+}
